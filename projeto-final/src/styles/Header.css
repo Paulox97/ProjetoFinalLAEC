@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Raleway:wght@100;200;300&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--dark);
+}
+
+.nav {
+    display: column; /*Como queriamos fazer duas linhas uma abaixo da outra,
+    foi necessário definir o elemento pai "NAV" com o display de coluna*/
+}
+
+.menu-sup{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+    color: #fff;
+}
+
+.menu-sup ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    
+}
+
+.menu-bot ul{
+    list-style: none;
+    justify-content: center;
+    display: flex;
+    gap: 20px;
+}
+
+.menu-bot a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.barra-pesquisa {
+    position: relative; /*Necessário essa posiçao para posicionar o ícone na DIV*/
+    display: inline-block;
+}
+
+.barra-pesquisa input {
+    padding-right: 35px; /*Abre espaço para a direito para o texto digitado não cobrir a lupa*/
+    padding-left: 15px;
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.lupa {
+    position: absolute;
+    right: 12px; /*Fixa no canto direito, sem ele a lupa fica fora da barra*/
+    top: 50%; /*Alinha a lupa no "meio" da barra, sem ela a lupa fica para cima*/
+    transform: translateY(-50%); /*Ajuste fino*/
+    color: #fff;
+    pointer-events: none; /* Faz o clique passar direto para o input */
+}
