@@ -55,7 +55,7 @@ body {
 }
 
 #root {
-  width: 1126px;
+  width: 100%; /*Aqui deixa a largura da aplicação em 100% com o tamanho da tela*/
   max-width: 100%;
   margin: 0 auto;
   text-align: center;

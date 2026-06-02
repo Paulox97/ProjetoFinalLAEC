@@ -12,21 +12,21 @@ function Header(){
                 <div className="menu-sup">
                     <div>
                         {/* Criar link para home */}
-                        <img src="/img/.png" alt="" />
-                        <FontAwesomeIcon icon={faBoxOpen} />
+                        <img src="img/logoOK.png" alt="" className="logo"/>
+                        <FontAwesomeIcon icon={faBoxOpen} className="caixa-pedido"/>
                     </div>
                     <div className="barra-pesquisa">
                         <input type="text" placeholder="O que você procura?"/>
                         <FontAwesomeIcon icon={faMagnifyingGlass} className="lupa"/>
                     </div>
                     <div>
-                        <ul>
+                        <ul className="icones-menu">
                             <li><FontAwesomeIcon icon={faCartShopping}/></li>
                             <li><FontAwesomeIcon icon={faUser} /></li>
                         </ul>
                     </div>
                 </div>
-                
+            
 
                 <div className="menu-bot">
                     <ul>
@@ -38,6 +38,7 @@ function Header(){
                         <li><a href="">Brinquedos</a></li>
                     </ul>
                 </div>
+                teste qualquer
             </nav>
         </header>
     )
