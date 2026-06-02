@@ -16,12 +16,18 @@ body{
     foi necessário definir o elemento pai "NAV" com o display de coluna*/
 }
 
+.logo-pedido {
+    display: flex;
+    gap: 50px;
+}
+
 .logo {
-    width: 100px;
+    width: 60px;
 }
 
 .caixa-pedido {
     font-size: 40px;
+    padding-top: 10px;
 }
 
 .menu-sup{
