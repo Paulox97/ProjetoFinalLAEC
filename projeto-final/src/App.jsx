@@ -1,7 +1,7 @@
-import './App.css'
-import Header from './components/Header'
-import { Routes, Route } from 'react-router-dom'
-import { Home } from './pages/Home'
+import './App.css';
+import Header from './components/Header';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Home } from './pages/Home';
  
 /* import { useState } from 'react'
 import reactLogo from './assets/react.svg'
@@ -12,10 +12,12 @@ function App() {
   return (
     <>
       <Header />
-      <Home />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+
     </>
   );
 }
