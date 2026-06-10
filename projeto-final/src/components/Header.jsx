@@ -5,7 +5,7 @@ import { faEnvelope, faCartShopping, faUser, faBoxOpen, faMagnifyingGlass } from
 import "../styles/Header.css"
 
 
-function Header(){
+function Header() {
     return (
         <header>
             <nav className="nav">
