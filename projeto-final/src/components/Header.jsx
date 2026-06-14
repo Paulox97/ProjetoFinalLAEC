@@ -38,7 +38,6 @@ function Header() {
                         <li><a href="">Brinquedos</a></li>
                     </ul>
                 </div>
-                teste qualquer 2
             </nav>
         </header>
     )
