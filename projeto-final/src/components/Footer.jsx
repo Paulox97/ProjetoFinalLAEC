@@ -19,7 +19,7 @@ function Footer() {
                 </ul>
                 </div>
                 <div className="grow1">
-                     <h3>Conteúdo</h3>
+                     <h3>Conteúdoo</h3>
                 <ul>
                     <li><a href="#">Estúdios Parceiros</a></li>
                     <li><a href="">Promoções do mês</a></li>
