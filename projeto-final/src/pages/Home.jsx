@@ -1,21 +1,30 @@
-/* import React from "react"
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEnvelope, faCartShopping, faUser, faBoxOpen, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
-import "../styles/Home.css" */
-import { Link } from 'react-router-dom'
+import { motion } from "framer-motion";
+import { useProducts } from "../hooks/useProducts";
+import { Link } from "react-router-dom";
+import { ProductCard } from "../components/ProductCard";
+import { Heading } from "@chakra-ui/react";
 
-import "../styles/Home.css"
+import "../styles/Home.css";
 
 export function Home() {
     const products = useProducts();
 
+<<<<<<< HEAD
+=======
+    <p> Promoções</p>
+
+    const handleAdd = (product) => {
+        console.log("Produto adicionado:", product);
+    }
+
+>>>>>>> b9bff12c9973c4d9289299625801582cbde8f9aa
     return (
         <div className="container">
+            <Heading as="h2" size="xl" mb="4" color="#236D83">Promoções</Heading>
             <div className="row">
             {products.map(p=>(
-                <div key={p.id} className="terereu">
-                    <ProductCard product={p} onAdd={()=> handleAdd(p)}/>
+                <div key={p.id} className="CardsProdutos">
+                    <ProductCard produto={p} onAdd={()=> handleAdd(p)}/>
                 </div>
             ))}
             </div>

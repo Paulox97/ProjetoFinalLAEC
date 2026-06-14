@@ -1,0 +1,21 @@
+.container {
+    width: 100%;
+    max-width: 1200px; /*Limite a largura para telas grandes*/
+    margin: 0 auto; /*Centraliza o container*/
+    padding: 20px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+    gap: 20px; /*Espaçamento entre os cards*/
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+}
+
+.CardsProdutos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

@@ -1,4 +1,5 @@
 import './App.css';
+import { ChakraProvider } from '@chakra-ui/react';
 import Header from './components/Header';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
@@ -11,8 +12,9 @@ import heroImg from './assets/hero.png' */
 
 function App() {
   return (
-    <>
+    <ChakraProvider>
       <Header />
+<<<<<<< HEAD
       <Footer />
       <BrowserRouter>
         {/* <Routes>
@@ -21,6 +23,10 @@ function App() {
       </BrowserRouter>
 {/*       <Footer />
  */}    </>
+=======
+      <Home />
+    </ChakraProvider>
+>>>>>>> b9bff12c9973c4d9289299625801582cbde8f9aa
   );
 }
 
