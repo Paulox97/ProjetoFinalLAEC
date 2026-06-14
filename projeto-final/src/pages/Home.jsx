@@ -10,7 +10,6 @@ import "../styles/Home.css"
 export function Home() {
     const products = useProducts();
 
-
     return (
         <div className="container">
             <div className="row">
@@ -18,12 +17,8 @@ export function Home() {
                 <div key={p.id} className="terereu">
                     <ProductCard product={p} onAdd={()=> handleAdd(p)}/>
                 </div>
-
             ))}
-
             </div>
-
-            
         </div>
     )
 }

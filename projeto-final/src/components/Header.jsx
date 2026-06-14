@@ -12,7 +12,7 @@ function Header() {
                 <div className="menu-sup">
                     <div className="logo-pedido">
                         {/* Criar link para home */}
-                        <img src="img/logoOK.png" alt="" className="logo"/>
+                        <img src="../img/logoOK.png" alt="" className="logo"/>
                         <FontAwesomeIcon icon={faBoxOpen} className="caixa-pedido"/>
                     </div>
                     <div className="barra-pesquisa">
