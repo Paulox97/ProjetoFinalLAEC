@@ -22,7 +22,7 @@ function Header() {
                     <div>
                         <ul className="icones-menu">
                             <li><FontAwesomeIcon icon={faCartShopping}/></li>
-                            <li><FontAwesomeIcon icon={faUser} /></li>
+                            <li><Link to="/login"><FontAwesomeIcon icon={faUser} /></Link></li>
                         </ul>
                     </div>
                 </div>
