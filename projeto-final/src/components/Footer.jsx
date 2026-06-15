@@ -12,37 +12,38 @@ function Footer() {
                 <div className="grow1">
                      <h3>Institucional</h3>
                 <ul>
-                    <li><a href="#">Sobre nós</a></li>
-                    <li><a href="">Perguntas frequentes</a></li>
-                    <li><a href="">Contato</a></li>
-                    <li><a href="">Politica de Envios e Devoluções</a></li>
+                    <li><a href="#" target="_blank">Sobre nós</a></li>
+                    <li><a href="" target="_blank">Perguntas frequentes</a></li>
+                    <li><a href="" target="_blank">Contato</a></li>
+                    <li><a href="" target="_blank">Politica de Envios e Devoluções</a></li>
+                    <li><a href="" target="_blank">Politica de Privacidade</a></li>
                 </ul>
                 </div>
                 <div className="grow1">
                      <h3>Conteúdo</h3>
                 <ul>
-                    <li><a href="#">Estúdios Parceiros</a></li>
-                    <li><a href="">Promoções do mês</a></li>
-                    <li><a href="">Cenários 3D</a></li>
+                    <li><a href="#" target="_blank">Estúdios Parceiros</a></li>
+                    <li><a href="" target="_blank">Promoções do mês</a></li>
+                    <li><a href="" target="_blank">Cenários 3D</a></li>
                 </ul>
                 </div>
                 <div className="grow1">
                      <h3>Central de Atendimento</h3>
                 <ul>
-                    <li><FontAwesomeIcon icon={faWhatsapp}/><a href="https://api.whatsapp.com/send/?phone=5542988285088&text&type=phone_number&app_absent=0">42 98828-5088</a></li>
-                    <li><FontAwesomeIcon icon={faPhone} /><a href="">46 99941-7866</a></li>
-                    <li><FontAwesomeIcon icon={faEnvelope} /><a href="">contato@3dshop.com.br</a></li>
-                    <li><FontAwesomeIcon icon={faLocationDot} /><a href="">Pato Branco - PR</a></li>
+                    <li><FontAwesomeIcon icon={faWhatsapp} className="icons-fotter"/><a href="https://api.whatsapp.com/send/?phone=5542988285088&text&type=phone_number&app_absent=0" target="_blank">42 98828-5088</a></li>
+                    <li><FontAwesomeIcon icon={faPhone} className="icons-fotter"/><a href="tel:+5546999417866" target="_blank">46 99941-7866</a></li>
+                    <li><FontAwesomeIcon icon={faEnvelope} className="icons-fotter"/><a href="mailto:contato@3dshop.com.br" target="_blank">contato@3dshop.com.br</a></li>
+                    <li><FontAwesomeIcon icon={faLocationDot} className="icons-fotter"/><a href="https://www.google.com.br/maps/place/Pato+Branco,+PR/@-26.1976145,-52.7672549,12z/data=!3m1!4b1!4m6!3m5!1s0x94e5533f62e22c55:0x74c614e61d62d7ce!8m2!3d-26.228901!4d-52.6716223!16zL20vMDR4X2gx?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDYxMC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Pato Branco - PR</a></li>
                 </ul>
                 </div>
                 <div className="">
                      <h3>Permaneça conectado</h3>
                 <ul>
-                    <li><FontAwesomeIcon icon={faInstagram}/><a href="#">Instagram</a></li>
-                    <li><FontAwesomeIcon icon={faFacebookF} /><a href="">Facebook</a></li>
-                    <li><FontAwesomeIcon icon={faYoutube} /><a href="">Youtube</a></li>
-                    <li><FontAwesomeIcon icon={faTiktok} /><a href="">TikTok</a></li>
-                    <li><FontAwesomeIcon icon={faXTwitter} /><a href="">X</a></li>
+                    <li><FontAwesomeIcon icon={faInstagram} className="icons-fotter"/><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+                    <li><FontAwesomeIcon icon={faFacebookF} className="icons-fotter"/><a href="https://www.facebook.com/?locale=pt_BR" target="_blank">Facebook</a></li>
+                    <li><FontAwesomeIcon icon={faYoutube} className="icons-fotter"/><a href="https://www.youtube.com/" target="_blank">Youtube</a></li>
+                    <li><FontAwesomeIcon icon={faTiktok} className="icons-fotter"/><a href="https://www.tiktok.com/pt-BR/" target="_blank">TikTok</a></li>
+                    <li><FontAwesomeIcon icon={faXTwitter} className="icons-fotter"/><a href="https://x.com/?lang=pt" target="_blank">X</a></li>
                 </ul>
                 </div>
             </div>

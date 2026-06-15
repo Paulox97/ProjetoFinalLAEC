@@ -9,15 +9,12 @@ import "../styles/Home.css";
 export function Home() {
     const products = useProducts();
 
-<<<<<<< HEAD
-=======
     <p> Promoções</p>
 
     const handleAdd = (product) => {
         console.log("Produto adicionado:", product);
     }
 
->>>>>>> b9bff12c9973c4d9289299625801582cbde8f9aa
     return (
         <div className="container">
             <Heading as="h2" size="xl" mb="4" color="#236D83">Promoções</Heading>

@@ -14,19 +14,9 @@ function App() {
   return (
     <ChakraProvider>
       <Header />
-<<<<<<< HEAD
-      <Footer />
-      <BrowserRouter>
-        {/* <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes> */}
-      </BrowserRouter>
-{/*       <Footer />
- */}    </>
-=======
       <Home />
+      <Footer />
     </ChakraProvider>
->>>>>>> b9bff12c9973c4d9289299625801582cbde8f9aa
   );
 }
 
