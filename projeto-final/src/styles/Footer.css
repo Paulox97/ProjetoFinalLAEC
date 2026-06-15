@@ -7,13 +7,14 @@
     display: flex;
     flex-direction: row;
     background-color: #236D83;
-    padding: 16px 80px;
+    padding: 16px 320px;
 }
 
  .footer-rodape h3 {
     color: #ffffff;
     line-height: 32px;
     display: flex;
+    font-weight: bold;
  }
 
 .footer-rodape a {
@@ -27,6 +28,17 @@
     list-style: none;
 }
 
+.icons-fotter {
+    color: #ffffff;
+    margin: 8px 4px 0px 0px;
+}
+
 .grow1{
     flex-grow: 1;
+}
+
+.footer-autorais {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 16px;
 }
