@@ -1,8 +1,16 @@
+body {
+    background-color: #D9D9D9 !important;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
 .container {
     width: 100%;
     max-width: 1200px; /*Limite a largura para telas grandes*/
     margin: 0 auto; /*Centraliza o container*/
     padding: 20px;
+    
 }
 
 .row {
@@ -18,4 +26,9 @@
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.CardsProdutos > * {
+    background-color: transparent !important;
+    border-color:#afadad !important;
 }
