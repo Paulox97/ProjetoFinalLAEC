@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/produto/:id" element={<DetalhesProdutos />} />
       </Routes>
-      <Footer />
+      <Footer />      
     </ChakraProvider>
   );
 }
