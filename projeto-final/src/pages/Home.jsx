@@ -14,7 +14,7 @@ export function Home() {
     }
 
     return (
-        <Box bg="#D9D9D9" w="100vw" minH="100vh" m="0" p="6">
+        <Box bg="#D9D9D9" w="100vw" minH="100vh" m="0" pt="130px" px="6" pb="6">
             <div className="container">
                 <Heading as="h2" size="xl" mb="4" color="#236D83">Promoções</Heading>
                 <div className="row">

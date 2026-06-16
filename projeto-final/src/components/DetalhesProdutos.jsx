@@ -9,6 +9,7 @@ import {
   Spinner,
   HStack,
   Flex,
+  Divider,
 } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -62,7 +63,7 @@ export function DetalhesProdutos() {
   };
 
   return (
-    <Box bg="#D9D9D9" w="100vw" minH="100vh" p="6">
+    <Box bg="#D9D9D9" w="100vw" minH="100vh" p="6" pt="180px">
       <Box maxW="1000px" mx="auto">
         <Button
           as={RouterLink}
@@ -93,21 +94,17 @@ export function DetalhesProdutos() {
             />
           </Box>
 
-          <Box flex="1" width="100%">
-            <Heading size="lg" mb="3" color="#236D83">
+          <Flex flex="1" width="100%" direction="column" alignItems="flex-start" textAlign="left">
+            <Heading size="lg" mb="3" color="#000000">
               {produto.nome}
             </Heading>
-            <Text fontSize="lg" mb="2">
-              <strong>Marca:</strong> {produto.marca}
-            </Text>
-            <Text fontSize="xl" fontWeight="bold" color="blue.900" mb="2">
+
+            <Text fontSize="40px" fontWeight="bold" color="#1A365D" mb="-1">
               {produto.preco}
             </Text>
-            <Text fontSize="lg" color="blue.600" fontWeight="bold">
+            <Text fontSize="25px" color="#236D83" fontWeight="bold" mb="6">
               {produto.precopix}
             </Text>
-            <Text>Escala: 32mm</Text>
-            <Text>Impressão 3D em resina</Text>
 
             <Flex gap="4" align="center" mt="6" mb="4" flexWrap="wrap">
               <HStack
@@ -144,20 +141,49 @@ export function DetalhesProdutos() {
                 flex="1"
                 minW="200px"
                 onClick={handleAdicionarAoCarrinho}
+                borderRadius="30px"
               >
                 Adicionar ao Carrinho
               </Button>
             </Flex>
 
-            <Text fontSize="sm" color="gray.600">
+            <Text fontSize="sm" fontWeight="bold" mt="10">
               Compre e cancele quando quiser.
             </Text>
             <Text fontSize="sm" color="gray.600">
               Sua compra está protegida, cancele gratuitamente se você se
               arrepender.
             </Text>
-          </Box>
+          </Flex>
         </Flex>
+
+        <Flex p="8" pt="0" direction="column" alignItems="flex-start" textAlign="left">
+
+          <Divider borderColor="gray.400" mb="6" />
+
+          <Heading size="md" mb="3" mt="2" color="#000000"> Descrição do Produto </Heading>
+          <Text fontSize="md" color="#000000" lineHeight="tall" mb="6">
+            Leve as suas sessões de RPG para o próximo nível com miniaturas de altíssima definição! Seja você um mestre querendo surpreender seus jogadores com um mestre de calabouço aterrorizante, ou um jogador querendo dar vida ao seu herói, esta peça é o que falta na sua mesa.
+          </Text>
+
+          <Heading size="md"  mb="3" color="#000000"> Diferenciais do Nosso Produto </Heading>
+          <Text fontSize="md" color="#000000" lineHeight="tall" mb="3">
+            Impressa com tecnologia de resina/filamento de ponta, capturando cada expressão, textura de armadura e detalhes da arma.
+          </Text>
+          <Text fontSize="md" color="#000000" lineHeight="tall" mb="3">
+            A peça passa por um processo de pós-cura e limpeza detalhado. Ela vai pronta para receber primer e as tintas da sua preferência.
+          </Text>
+          <Text fontSize="md" color="#000000" lineHeight="tall" mb="6">
+            Utilizamos materiais selecionados para garantir uma boa durabilidade durante o manuseio nas jogatinas.
+          </Text>
+
+          <Heading size="md"  mb="3" color="#000000">Especificações Técnicas</Heading>
+          <Text fontSize="md" color="#000000" lineHeight="short" mb="2">Material:	Resina de Alta Definição (ou Plástico ABS/PLA premium)</Text>
+          <Text fontSize="md" color="#000000" lineHeight="short" mb="2">Escala Padrão:	28mm / 32mm (Heroic Scale — Ideal para D&D, Pathfinder, Tormenta)</Text>
+          <Text fontSize="md" color="#000000" lineHeight="short" mb="2">Base:	Adquirida separadamente</Text>
+          <Text fontSize="md" color="#000000" lineHeight="short" mb="2">Cor do Material:	Geralmente Cinza (perfeita para visualização dos detalhes antes da pintura)</Text>
+        </Flex>
+
       </Box>
     </Box>
   );
