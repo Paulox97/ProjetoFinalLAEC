@@ -5,7 +5,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
 
 header {
@@ -37,6 +36,10 @@ body{
 .caixa-pedido {
     font-size: 40px;
     padding-top: 10px;
+}
+
+.menus {
+    height: 140px;
 }
 
 .menu-sup{

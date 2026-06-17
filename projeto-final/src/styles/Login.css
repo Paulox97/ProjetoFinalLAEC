@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:wght@300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Raleway:wght@100;200;300&display=swap');
 
+.page {
+    margin-top: calc(140px - 0px);
+}
+
 .login-container {
     width: 100%;
     max-width: 400px;
@@ -22,7 +26,7 @@
 .form-group-1 {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
+    align-items: flex-start;
     margin-bottom: 20px;
     width: 100%;
 }
@@ -34,15 +38,23 @@
 }
 
 .form-group-1 input {
-    padding: 12px;
-    border: none;
+    padding: 10px;
+    border: 1px solid #dbdbdb;
     border-radius: 10px;
     width: 100%;
     box-sizing: border-box;
-} 
+}
 
 .btn-sessao {
-    
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: #135468;
+    color: #ffffff;
+    width: 200px;
+    display: block;
+    margin: 0 auto;
 }
 
 .text-center {
