@@ -12,9 +12,7 @@ function Header() {
                 <div className="menus">
                     <div className="menu-sup">
                         <div className="logo-pedido">
-                            {/* Criar link para home */}
-                            <img src="../img/logo.png" alt="" className="logo" />
-                            {/* <FontAwesomeIcon icon={faBoxOpen} className="caixa-pedido"/> */}
+                            <Link to="/"><img src="../img/logo.png" alt="" className="logo"/></Link>
                         </div>
                         <div className="barra-pesquisa">
                             <input type="text" placeholder="O que você procura?" />
@@ -22,7 +20,7 @@ function Header() {
                         </div>
                         <div>
                             <ul className="icones-menu">
-                                <li><FontAwesomeIcon icon={faCartShopping} /></li>
+                                <li><Link to="/carrinho"><FontAwesomeIcon icon={faCartShopping}/></Link></li>
                                 <li><Link to="/login"><FontAwesomeIcon icon={faUser} /></Link></li>
                             </ul>
                         </div>
@@ -33,8 +31,6 @@ function Header() {
                             <li><a href="">Chaveiros</a></li>
                             <li><a href="">Decorações</a></li>
                             <li><a href="">Organizadores</a></li>
-{/*                             <li><a href="">Jogos</a></li>
-                            <li><a href="">Brinquedos</a></li> */}
                         </ul>
                     </div>
                 </div>
