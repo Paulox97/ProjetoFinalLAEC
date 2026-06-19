@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useProducts } from "../hooks/useProducts";
+import { useCart } from "../hooks/useCart"
 import { Link } from "react-router-dom";
 import { ProductCard } from "../components/ProductCard";
 import { Heading, Box } from "@chakra-ui/react";
@@ -8,8 +9,10 @@ import "../styles/Home.css";
 
 export function Home() {
     const products = useProducts();
+    const { addProductCart } = useCart();
 
     const handleAdd = (product) => {
+        addProductCart(product);
         console.log("Produto adicionado:", product);
     }
 

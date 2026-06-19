@@ -1,21 +1,14 @@
 import { useParams, Link as RouterLink } from "react-router-dom";
 import { useProducts } from "../hooks/useProducts";
-import {
-  Box,
-  Heading,
-  Text,
-  Image,
-  Button,
-  Spinner,
-  HStack,
-  Flex,
-  Divider,
-} from "@chakra-ui/react";
+import { useCart } from "../hooks/useCart";
+import { Box, Heading, Text, Image, Button, Spinner, HStack, Flex, Divider, Badge} from "@chakra-ui/react";
 import { useState } from "react";
 
 export function DetalhesProdutos() {
   const { id } = useParams();
   const produtos = useProducts();
+  
+  const { cart, addProductCart } = useCart();
 
   const [quantidade, setQuantidade] = useState(1);
 
@@ -56,10 +49,18 @@ export function DetalhesProdutos() {
     );
   }
 
+  const produtoNoCarrinho = cart.find((item) => item.id === produto.id);
+  const quantidadeNoCarrinho = produtoNoCarrinho ? produtoNoCarrinho.quantidade : 0;
+
   const handleAdicionarAoCarrinho = () => {
+
+    addProductCart(produto, quantidade);
+
     console.log(
       `Adicionado ao carrinho: ${produto.nome} (Quantidade: ${quantidade})`,
     );
+    
+    setQuantidade(1);
   };
 
   return (
@@ -95,6 +96,11 @@ export function DetalhesProdutos() {
           </Box>
 
           <Flex flex="1" width="100%" direction="column" alignItems="flex-start" textAlign="left">
+            
+            <Badge colorScheme="teal" variant="solid" mb="2" borderRadius="md" px="2" py="0.5">
+              {quantidadeNoCarrinho} já no seu carrinho
+            </Badge>
+
             <Heading size="lg" mb="3" color="#000000">
               {produto.nome}
             </Heading>

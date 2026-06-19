@@ -8,18 +8,26 @@ export function CartProvider({ children }) {
     });
 
     useEffect(() => {
-        localStorage.setItem("carrinho", JSON.stringify(cart));
+        if (cart) {
+            localStorage.setItem("carrinho", JSON.stringify(cart));
+        }
     }, [cart]);
 
-    const addProductCart = (product) => {
-        const exists = cart.find((p) => p.id === product.id);
-        if (exists) {
-            setCart(cart.map((p) => p.id === product.id ? { ...p, quantidade: p.quantidade + 1 } : p));
-            return false;
-        } else {
-            setCart([...cart, { ...product, quantidade: 1 }]);
-            return true;
-        }
+    const addProductCart = (product, quantityToAdd = 1) => {
+        setCart((prevCart) => {
+            const exists = prevCart.find((p) => Number(p.id) === Number(product.id));
+
+            if (exists) {
+                return prevCart.map((p) => 
+                    Number(p.id) === Number(product.id)
+                        ? { ...p, quantidade: p.quantidade + Number(quantityToAdd) }
+                        : p
+                    );
+            }
+            
+            return [...prevCart, { ...product, quantidade: Number(quantityToAdd) }];
+            
+        });
     };
 
     const removeProductCart = (productId) => {

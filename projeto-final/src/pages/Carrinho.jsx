@@ -1,14 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useCart } from "../hooks/useCart";
 import { Link } from "react-router-dom";
-import { Box, Flex, Heading, Text, Checkbox, Image, Button, IconButton, HStack, Stack, Divider } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, Checkbox, Image, Button, IconButton, HStack, Stack, Divider, VStack } from "@chakra-ui/react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 
 export function Carrinho() {
     const { cart, removeProductCart, updateQuantity } = useCart();
 
-    const totalPix = cart.reduce((acc, p) => acc + (p.preco * 0.9 * p.quantidade), 0);
-    const totalNormal = cart.reduce((acc, p) => acc + (p.preco * p.quantidade), 0);
+    const [selectedItems, setSelectedItems] = useState([]);
+
+    useEffect(() => {
+        const cartIds = cart.map(p => p.id);
+        setSelectedItems(prev => prev.filter(id => cartIds.includes(id)));
+    }, [cart]);
+
+    const parsePreco = (precoValor) => {
+        if (typeof precoValor === "number") return precoValor;
+        if (!precoValor) return 0;
+
+        const limpo = precoValor.toString().replace(/R\$\s?/, "").replace(/\./g, "").replace(",", ".");
+        return parseFloat(limpo) || 0;
+    }
+
+    const handleToggleSelect = (productId) => {
+        if (selectedItems.includes(productId)) {
+            setSelectedItems(selectedItems.filter(id => id !== productId));
+        } else {
+            setSelectedItems([...selectedItems, productId]);
+        }
+    }
+
+    const totalPix = cart.reduce((acc, p) => {
+        const isSelected = selectedItems.includes(p.id);
+        return acc + (isSelected ? (parsePreco(p.preco) * 0.9 * p.quantidade) : 0);
+    }, 0);
+
+    const totalNormal = cart.reduce((acc, p) => {
+        const isSelected = selectedItems.includes(p.id);
+        return acc + (isSelected ? (parsePreco(p.preco) * p.quantidade) : 0);
+    }, 0);
+    
+    const totalItensSelecionados = cart.reduce((acc, p) => {
+        return acc + (selectedItems.includes(p.id) ? p.quantidade : 0);
+    }, 0);
 
     return (
         <Box bg="#D9D9D9" minH="100vh" pt="180px" pb="10" px={{ base: 4, md: 10}}>
@@ -18,14 +52,14 @@ export function Carrinho() {
                 {/* Coluna esquerda */}
                 <Box bg="white" flex="2" w="100%" borderRadius="sm" p="6" boxShadow="sm">
                 
-                    <Heading as="h1" size="lg" mb="2" fontWeight="500">
+                    <Heading as="h1" size="lg" mb="2" fontWeight="500" color="gray.500">
                         Carrinho de compras
                     </Heading>
 
-                    {cart.length === 0 ? (
-                        <Text color="gray.500" mt="4">Nenhum item adicionado ao carrinho.</Text>
+                    {selectedItems.length === 0 ? (
+                        <Text fontSize="sm" color="gray.500" mb="4">Nenhum item adicionado ao carrinho.</Text>
                     ) : (
-                        <Text fontSize="sm" color="gray.500" mb="4">Nenhum item selecionado.</Text>
+                        <Text fontSize="sm" color="gray.500" mb="4">Conclua seu pedido em "Fechar Pedido"</Text>
                     )}
 
                     <Divider borderColor="gray.300" mb="6" />
@@ -33,81 +67,96 @@ export function Carrinho() {
                     {/* Mapeamento itens carrinho */}
 
                     <Stack spacing="6">
-                        {cart.map((p) => (
-                            <Box key={p.id}>
-                                <Flex direction={{ base: "column", md: "row" }} align="center" justify="space-between" gap="4">
+                        {cart.map((p) => {
+                            const precoNumerico = parsePreco(p.preco);
+                            const isChecked = selectedItems.includes(p.id);
 
-                                    {/* checkbox, imagem e texto */}
+                            return (
+                                <Box key={p.id}>
+                                    <Flex direction={{ base: "column", md: "row" }} align="center" justify="space-between" gap="4">
 
-                                    <Flex align="center" gap="4" flex="1">
-                                        <Checkbox colorScheme="teal" size="lg" />
-                                        <Image src={p.imagem || "../img/logo.png"} alt={p.nome} boxSize="100px" objectFit="cover" borderRadius="md" />
-                                        <Box>
-                                            <Text fontWeight="bold" fontSize="sm" noOfLines={2}>
-                                                {p.nome || "Nome do produto"}
-                                            </Text>
-                                            <Text fontSize="xs" color="orange.400" mt="1">
-                                                Estimativa de envio de 4 a 5 dias
-                                            </Text>
-                                            <Text fontSize="xs" color="gray.600" mt="1">
-                                                Entrega: 20 a 24 de maio.
-                                            </Text>
+                                        {/* checkbox, imagem e texto */}
 
-                                            <HStack mt="3" spacing="4">
-                                                <HStack maxW="120px" border="1px solid" borderColor="gray.300" borderRadius="md" px="2" py="0.5">
-                                                    <IconButton
-                                                        size="xs" variant="ghost" icon={<MinusIcon w={2} h={2} />}
-                                                        onClick={() => updateQuantity(p.id, "decrementar")}
-                                                    />
-                                                    <Text fontSize="sm" w="20px" textAlign="center">{p.quantidade}</Text>
-                                                    <IconButton
-                                                        size="xs" variant="ghost" icon={<AddIcon w={2} h={2} />}
-                                                        onClick={() => updateQuantity(p.id, "incrementar")}
-                                                    />
+                                        <Flex align="center" gap="4" flex="1">
+                                            <Checkbox colorScheme="teal" size="lg" isChecked={isChecked} onChange={() => handleToggleSelect(p.id)}/>
+                                            <Image src={p.imagem ? `/img/${p.imagem}`: "/img/logo.png"} alt={p.nome} boxSize="100px" objectFit="cover" borderRadius="md" />
+                                            <Box>
+                                                <Text fontWeight="bold" fontSize="sm" noOfLines={2}>
+                                                    {p.nome || "Nome do produto"}
+                                                </Text>
+                                                <Text fontSize="xs" color="orange.400" mt="1">
+                                                    Estimativa de envio de 4 a 5 dias
+                                                </Text>
+                                                <Text fontSize="xs" color="gray.600" mt="1">
+                                                    Entrega: 20 a 24 de maio.
+                                                </Text>
+
+                                                <HStack mt="3" spacing="4">
+                                                    <HStack maxW="120px" border="1px solid" borderColor="gray.300" borderRadius="md" px="2" py="0.5">
+                                                        <IconButton
+                                                            size="xs" variant="ghost" icon={<MinusIcon w={2} h={2} />}
+                                                            onClick={() => updateQuantity(p.id, "decrementar")}
+                                                        />
+                                                        <Text fontSize="sm" w="20px" textAlign="center">{p.quantidade}</Text>
+                                                        <IconButton
+                                                            size="xs" variant="ghost" icon={<AddIcon w={2} h={2} />}
+                                                            onClick={() => updateQuantity(p.id, "incrementar")}
+                                                        />
+                                                    </HStack>
+                                                    <Button
+                                                        variant="link" size="xs" color="gray.500" fontWeight="normal"
+                                                        onClick={() => removeProductCart(p.id)}
+                                                    >
+                                                        Excluir
+                                                    </Button>
                                                 </HStack>
-                                                <Button
-                                                    variant="link" size="xs" color="gray.500" fontWeight="normal"
-                                                    onClick={() => removeProductCart(p.id)}
-                                                >
-                                                    Excluir
-                                                </Button>
-                                            </HStack>
+                                            </Box>
+                                        </Flex>
+
+                                        <Box textAlign={{ base: "left", md: "right" }} minW="150px">
+                                            <Text fontSize="2xl" fontWeight="bold" color="#236D83">
+                                                R$ {(precoNumerico * p.quantidade).toFixed(2).replace(".", ",")}
+                                            </Text>
+                                            <Text fontSize="sm" fontWeight="bold" color="#319795">
+                                                R$ {((precoNumerico * 0.9) * p.quantidade).toFixed(2).replace(".", ",")} no Pix
+                                            </Text>
                                         </Box>
                                     </Flex>
-
-                                    <Box textAlign={{ base: "left", md: "right" }} minW="150px">
-                                        <Text fontSize="2xl" fontWeight="bold" color="#236D83">
-                                            R$ {(p.preco * p.quantidade).toFixed(2)}
-                                        </Text>
-                                        <Text fontSize="sm" fontWeight="bold" color="#319795">
-                                            R$ {((p.preco * 0.9) * p.quantidade).toFixed(2)} no Pix
-                                        </Text>
-                                    </Box>
-                                </Flex>
-                                <Divider borderColor="gray.200" mt="6"/>
-                            </Box>
-                        ))}
+                                    <Divider borderColor="gray.200" mt="6"/>
+                                </Box>
+                            );
+                        })}
                     </Stack>
                 </Box>
 
                     {/* Caixa direita */}
 
                 <Box bg="white" flex="0.9" w="100%" borderRadius="sm" p="6" boxShadow="sm" position={{ lg: "sticky" }} top="140px">
-                    {cart.length === 0 ? (
+                    {selectedItems.length === 0 ? (
                         <Text fontSize="md" textAlign="center" py="4" color="gray.700">
                             Nenhum item selecionado.
                         </Text>
                     ) : (
                         <Box mb="4">
-                            <Text fontSize="sm" color="gray.600">Subtotal ({cart.length} itens):</Text>
-                            <Text fontSize="xl" fontWeight="bold" color="#236D83">R$ {totalNormal.toFixed(2)}</Text>
-                            <Text fontSize="md" color="teal.500" fontWeight="semibold">Ou R$ {totalPix.toFixed(2)} no Pix</Text>
+                            <Text fontSize="sm" color="gray.600">Subtotal ({selectedItems.length} itens):</Text>
+                            <Text fontSize="xl" fontWeight="bold" color="#236D83">R$ {totalNormal.toFixed(2).replace(".", ",")}</Text>
+                            <Text fontSize="md" color="teal.500" fontWeight="semibold">Ou R$ {totalPix.toFixed(2).replace(".", ",")} no Pix</Text>
                         </Box>
                     )}
 
-                    <Button w="100%" bg="#236D83" color="white" borderRadius="full" size="md" mt="2" _hover={{ bg: "#1a5263"}} isDisabled={cart.length === 0}>
-                        Fechar Pedido
-                    </Button>
+                    <VStack spacing="3" w="100%" mt="2">
+
+                        <Button w="100%" bg="#236D83" color="white" borderRadius="full" size="md" mt="2" _hover={{ bg: "#1a5263"}} isDisabled={selectedItems.length === 0}>
+                            Fechar Pedido
+                        </Button>
+                        
+                        <Button w="100%" variant="outline" bg="#236D83" color="white" borderRadius="full" size="md"  _hover={{ bg: "#1a5263"}} as={Link} to="/">
+                            Continuar comprando
+                        </Button>
+
+                    </VStack>
+
+
                 </Box>
             </Flex>
         </Box>
