@@ -5,17 +5,19 @@ import { Box, Heading, Text, Image, Button, Spinner, HStack, Flex, Divider, Badg
 import { useState } from "react";
 
 export function DetalhesProdutos() {
+  //Captura o ID do produto
   const { id } = useParams();
+  //Pega a lista de produtos do hook (useProducts)
   const produtos = useProducts();
-  
+  //Pega o estado do carrinho e a função para adicionar o item
   const { cart, addProductCart } = useCart();
-
+  //Controla a quantidade de item do carrinho
   const [quantidade, setQuantidade] = useState(1);
-
+  // Função para aumentar e diminuir a quantidade, não pode ser menor que um
   const aumentarQuantidade = () => setQuantidade((prev) => prev + 1);
   const diminuirQuantidade = () =>
     setQuantidade((prev) => (prev > 1 ? prev - 1 : 1));
-
+  //Tela de carregamento, DIZ QUE é bom ter caso a lista de produtos esteja vazia
   if (produtos.length === 0) {
     return (
       <Box
@@ -30,9 +32,9 @@ export function DetalhesProdutos() {
       </Box>
     );
   }
-
+  //Encontra o produto correto através do ID do link
   const produto = produtos.find((p) => p.id === parseInt(id));
-
+  //Se não achar o produto, exibe o erro
   if (!produto) {
     return (
       <Box
@@ -48,10 +50,10 @@ export function DetalhesProdutos() {
       </Box>
     );
   }
-
+  //Checa se o produto está no carrinho e descobre a quantidade
   const produtoNoCarrinho = cart.find((item) => item.id === produto.id);
   const quantidadeNoCarrinho = produtoNoCarrinho ? produtoNoCarrinho.quantidade : 0;
-
+  //Adicionar o produto e a quantidade ao carrinho
   const handleAdicionarAoCarrinho = () => {
 
     addProductCart(produto, quantidade);
