@@ -19,7 +19,7 @@ import { useCart } from "../hooks/useCart";
 export function ProductCard({ produto, onAdd }) {
   //Se não tiver produto, não abre a página
   if (!produto) return null;
-  //Retira as propriedades do aluno, para usá-las sem precisar digitar "produto.nome", etc.
+  //Retira as propriedades do produto, para usá-las sem precisar digitar "produto.nome", etc.
   const { id, nome, precopromo, preco, precopix, marca, imagem } = produto;
   //Acessa a lista de itens que estão no carrinho atualmente
   const { cart } = useCart();
